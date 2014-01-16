@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+        <SwitchPreference
+            android:id="@+id/holo"
+            android:key="THEME"
+            android:title="Holo Theme"
+            android:switchTextOn="Light"
+            android:switchTextOff="Dark"
+            android:defaultValue="false"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>
