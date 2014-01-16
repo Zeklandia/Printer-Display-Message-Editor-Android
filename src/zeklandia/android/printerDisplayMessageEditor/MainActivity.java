@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -33,7 +34,29 @@ public class MainActivity extends FragmentActivity {
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
 	static ViewPager mViewPager;
-
+	
+	private static final int printerPort = 9100;
+    private final static String formatRDYMSG = "\u001B%-12345X@PJL JOB\n" +
+    "@PJL RDYMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
+    private final static String formatOPMSG = "\u001B%-12345X@PJL JOB\n" +
+    "@PJL OPMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
+    private final static String formatERRMSG = "\u001B%-12345X@PJL JOB\n" +
+    "@PJL ERRMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
+    
+	static EditText editTextIP;
+	static EditText editTextMessage;
+	static Spinner spinnerMessage;
+	static ListView printerSearchListView;
+	
+	Intent helpActivity;
+	Intent aboutActivity;
+	
+	static ListAdapter mPrinterListAdapter;
+	List<HashMap<String, String>> mPrinterListData = new ArrayList<HashMap<String, String>>();
+	static String[] mPrinterListFrom = new String[]{"PRINTER_NAME", "PRINTER_IP"};
+	static int[] mPrinterListTo = new int[]{R.id.title_text, R.id.subtitle_text};
+	static final boolean debug = false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         if(PrinterSettingsStorage.useLightTheme(getContext())) {
@@ -53,27 +76,19 @@ public class MainActivity extends FragmentActivity {
         PagerTitleStrip scrollTitle = (PagerTitleStrip) findViewById(R.id.pager_title_strip);
             scrollTitle.setTextColor(Color.parseColor("#323232"));
         }
+        
+        spinnerMessage.setOnItemSelectedListener((OnItemSelectedListener) this);
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view, 
+            int pos, long id) {
+        int selectedMessage = (Integer) parent.getItemAtPosition(0);
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 	
-	private static final int printerPort = 9100;
-    private final static String formatRDYMSG = "\u001B%-12345X@PJL JOB\n" +
-    "@PJL RDYMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
-    private final static String formatOPMSG = "\u001B%-12345X@PJL JOB\n" +
-    "@PJL OPMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
-    private final static String formatERRMSG = "\u001B%-12345X@PJL JOB\n" +
-    "@PJL ERRMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
-	private EditText editTextIP;
-	private EditText editTextMessage;
-	private Spinner spinnerMessage;
-	private ListView printerSearchListView;
-	Intent helpActivity;
-	Intent aboutActivity;
-	private ListAdapter mPrinterListAdapter;
-	List<HashMap<String, String>> mPrinterListData = new ArrayList<HashMap<String, String>>();
-	private String[] mPrinterListFrom = new String[]{"PRINTER_NAME", "PRINTER_IP"};
-	private int[] mPrinterListTo = new int[]{R.id.title_text, R.id.subtitle_text};
-	private static final boolean debug = false;
-
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -93,12 +108,6 @@ public class MainActivity extends FragmentActivity {
 			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spinnerMessage.setAdapter(dataAdapter);
 		  }
-	
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
-		Toast.makeText(parent.getContext(), 
-			"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-			Toast.LENGTH_SHORT).show();
-	  }
 	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
