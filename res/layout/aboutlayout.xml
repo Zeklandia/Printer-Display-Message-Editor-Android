@@ -17,13 +17,6 @@
   	android:layout_width="wrap_content"
   	android:layout_height="wrap_content"
   	android:src="@drawable/ic_menu_info_details"/>
-  	<TextView
-  	android:layout_width="wrap_content"
-  	android:layout_height="wrap_content"
-  	android:text="@string/about"
-  	android:textSize="40sp"
-  	android:textColor="@android:color/primary_text_dark_nodisable"
-  	/>
   	</LinearLayout>
   	<TextView
   	android:layout_width="fill_parent"

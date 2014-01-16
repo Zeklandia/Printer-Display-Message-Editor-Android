@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, PrinterHack!</string>
-    <string name="app_name">PrinterHack</string>
-    <string name="help_title">PrinterHack Help</string>
-    <string name="help">Help</string>
-    <string name="about_title">PrinterHack About</string>
-    <string name="about">About</string>
-    <string name="donate_title">Help me pay for college</string>
-    <string name="donate">Donate</string>
+    <string name="app_name">Printer Display Message Editor</string>
+    <string name="help_title">Help</string>
+    <string name="about_title">About</string>
     <string name="rdymsg_help_text">RDYMSG commands, or ready message commands, 
     	are used to change a printer\'s \'ready\' message. 
     	\n\nThis has many entertaining possibilities - I recommend 
@@ -49,12 +44,6 @@
 		\nActually, money for college is one of the main goals I have with Android development, so it would be really 
 		cool of you to donate via my <a href="http://qrohlf.com/donate/">website</a>!
 	</string>
-	<string name="app_donate_text">
-		Hi, I\'m an 18 year old student who does Android development in his spare time. If you found this app helpful or useful,
-		it would be really rad if you would donate to me, either by buying the donate version of this app in the Market, or by donating 
-		via the paypal button on my <a href="http://qrohlf.com/donate/">website</a>. If you do, I\'ll probably send you a postcard or a beta version of one of my apps.
-		\n
-		\nCheers,
-		\n-QRohlf
-	</string>
+	<string name="action_settings">Settings</string>
+	<string name="main_title">Welcome</string>
 </resources>
