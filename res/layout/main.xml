@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:myapp="http://schemas.android.com/apk/res/com.qrohlf.printerhack"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:layout_alignParentTop="true"
+	    >
+	<TextView  
+		android:id="@+id/printer_ip_label"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="Printer IP:"
+	    />
+	<EditText  
+		android:id="@+id/printer_ip"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:hint="ex. 192.168.1.4"
+	    android:singleLine="true"
+	    />
+	<TextView
+	    android:id="@+id/printer_message_label"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="Message:"
+	    />
+	<EditText
+	    android:id="@+id/printer_message"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:hint="16 characters or less"
+	    android:maxLength="16"
+	    android:singleLine="true"
+	    />
+    
+	    <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    >
+		    <Button
+		    android:id="@+id/rdymsg_button"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Change Printer Ready Message"
+		    />
+		    <ImageButton
+			    android:id="@+id/rdymsg_button_help"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:src="@drawable/ic_btn_help"
+			    android:padding="5sp"
+			/>
+		</LinearLayout>
+	    <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    >
+		    <Button
+		    android:id="@+id/opmsg_button"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Send Printer Operator Message"
+		    android:layout_gravity="center"
+		    />
+		    <ImageButton
+		    android:id="@+id/opmsg_button_help"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/ic_btn_help"
+		    android:padding="5sp"
+		    />
+	    </LinearLayout>
+    </LinearLayout>
+    <com.admob.android.ads.AdView
+		android:id="@+id/ad"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:gravity="bottom"
+		myapp:backgroundColor="#000000"
+		myapp:primaryTextColor="#FFFFFF"
+		myapp:secondaryTextColor="#CCCCCC"
+		myapp:refreshInterval="45"
+	/>
+</RelativeLayout>
