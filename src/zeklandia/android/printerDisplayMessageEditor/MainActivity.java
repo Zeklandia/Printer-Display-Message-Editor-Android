@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,8 +46,10 @@ public class MainActivity extends FragmentActivity {
     
 	static EditText editTextIP;
 	static EditText editTextMessage;
-	static Spinner spinnerMessage;
 	static ListView printerSearchListView;
+	static RadioButton radioButtonRDY;
+	static RadioButton radioButtonERR;
+	static RadioButton radioButtonOP;
 	
 	Intent helpActivity;
 	Intent aboutActivity;
@@ -76,17 +79,6 @@ public class MainActivity extends FragmentActivity {
         PagerTitleStrip scrollTitle = (PagerTitleStrip) findViewById(R.id.pager_title_strip);
             scrollTitle.setTextColor(Color.parseColor("#323232"));
         }
-        
-        spinnerMessage.setOnItemSelectedListener((OnItemSelectedListener) this);
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view, 
-            int pos, long id) {
-        int selectedMessage = (Integer) parent.getItemAtPosition(0);
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
     }
 	
 	@Override
@@ -95,19 +87,6 @@ public class MainActivity extends FragmentActivity {
         inflater.inflate(R.menu.main, menu);
         return true;
     }
-
-	  public void addItemsOnSpinner() {
-		  
-			spinnerMessage = (Spinner) findViewById(R.id.spinnerMessage);
-			List<String> list = new ArrayList<String>();
-			list.add("Ready Message (RDYMSG)");
-			list.add("Error Message (ERRMSG)");
-			list.add("Operator Message (OPMSG)");
-			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, list);
-			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			spinnerMessage.setAdapter(dataAdapter);
-		  }
 	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

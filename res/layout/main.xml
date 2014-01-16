@@ -26,12 +26,34 @@
             android:hint="Printer IP Address..."
             android:inputType="phone" />
 
-        <Spinner
-            android:id="@+id/spinnerMessage"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+            android:layout_marginBottom="32dp" >
+
+            <RadioButton
+                android:id="@+id/radioButtonRDY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/linearLayout1"
+                android:text="Ready Message" />
+
+            <RadioButton
+                android:id="@+id/radioButtonERR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Error Message" />
+
+            <RadioButton
+                android:id="@+id/radioButtonOP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Operator Message" />
+        </LinearLayout>
 
     </RelativeLayout>
 
