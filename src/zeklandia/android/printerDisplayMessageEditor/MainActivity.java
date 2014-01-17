@@ -18,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -114,6 +115,7 @@ public class MainActivity extends FragmentActivity {
 			Bundle args = new Bundle();
 			args.putInt(SectionFragment.ARG_SECTION_NUMBER, position);
 			fragment.setArguments(args);
+			
 			return fragment;
 		}
 
@@ -142,23 +144,6 @@ public class MainActivity extends FragmentActivity {
 		public static final String ARG_SECTION_NUMBER = "section_number";
 		
 		public SectionFragment() {
-			
-		}
-
-		private void attachListeners() {
-	        final Button button = (Button) findViewById(R.id.buttonSend);
-	        button.setOnClickListener(new View.OnClickListener() {
-	            public void onClick(View v) {
-	            	if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 0 ) {
-	            		new sendRDYMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
-	            	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 1 ) {
-	            		new sendERRMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
-	            	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 2 ) {
-	            		new sendOPMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
-	            	}
-	            	
-	            }
-	        });
 			
 		}
 
