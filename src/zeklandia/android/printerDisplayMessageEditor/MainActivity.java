@@ -1,5 +1,25 @@
 package zeklandia.android.printerDisplayMessageEditor;
 
+/*
+ * TODO:
+ * 
+ * Insert this code so that it works:
+ * 				
+ *				final Button button = (Button) findViewById(R.id.buttonSend);
+ *			       button.setOnClickListener(new View.OnClickListener() {
+ *			           public void onClick(View v) {
+ *			           	if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 0 ) {
+ *			           	 new sendRDYMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+ *			           	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 1 ) {
+ *			           	 new sendERRMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+ *			           	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 2 ) {
+ *			           	 new sendOPMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+ *			           	}
+ *			           	
+ *			           }
+ *			       });
+ */
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -26,8 +46,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
@@ -164,7 +186,7 @@ public class MainActivity extends FragmentActivity {
 			}
 
 			View view = inflater1.inflate(resId, null);
-
+			
 			return view;
 		}
 	}

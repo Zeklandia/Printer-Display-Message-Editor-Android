@@ -6,39 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/buttonSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="Send Message" />
-
-        <EditText
-            android:id="@+id/editTextIP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:hint="Printer IP Address..."
-            android:inputType="phone" />
-
-        <EditText
-            android:id="@+id/editTextMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextIP"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:hint="Display message..."
-            android:inputType="textMultiLine" />
-
         <RadioGroup
             android:id="@+id/radioGroupMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextMessage"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" >
 
             <RadioButton
@@ -60,6 +32,34 @@
                 android:layout_height="wrap_content"
                 android:text="Operator Message" />
         </RadioGroup>
+
+        <EditText
+            android:id="@+id/editTextIP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioGroupMessage"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Printer IP Address..."
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/editTextMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextIP"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Display message..."
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Send Message" />
 
     </RelativeLayout>
 
