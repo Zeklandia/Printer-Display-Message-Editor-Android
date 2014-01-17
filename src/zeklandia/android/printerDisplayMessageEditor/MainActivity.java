@@ -1,5 +1,10 @@
 package zeklandia.android.printerDisplayMessageEditor;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +12,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,14 +26,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.Spinner;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
@@ -46,10 +48,6 @@ public class MainActivity extends FragmentActivity {
     
 	static EditText editTextIP;
 	static EditText editTextMessage;
-	static ListView printerSearchListView;
-	static RadioButton radioButtonRDY;
-	static RadioButton radioButtonERR;
-	static RadioButton radioButtonOP;
 	
 	Intent helpActivity;
 	Intent aboutActivity;
@@ -142,8 +140,26 @@ public class MainActivity extends FragmentActivity {
 	public static class SectionFragment extends Fragment {
 
 		public static final String ARG_SECTION_NUMBER = "section_number";
-
+		
 		public SectionFragment() {
+			
+		}
+
+		private void attachListeners() {
+	        final Button button = (Button) findViewById(R.id.buttonSend);
+	        button.setOnClickListener(new View.OnClickListener() {
+	            public void onClick(View v) {
+	            	if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 0 ) {
+	            		new sendRDYMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+	            	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 1 ) {
+	            		new sendERRMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+	            	} else if (((RadioGroup)findViewById(R.id.radioGroupMessage)).getCheckedRadioButtonId() == 2 ) {
+	            		new sendOPMSGTask().execute(editTextIP.getText().toString(), editTextMessage.getText().toString());
+	            	}
+	            	
+	            }
+	        });
+			
 		}
 
 		@Override
@@ -156,7 +172,7 @@ public class MainActivity extends FragmentActivity {
 			int resId = (Integer) getArguments().get(ARG_SECTION_NUMBER);
 			switch (resId) {
 			case 0:
-				resId = R.layout.activity_main;
+				resId = R.layout.main;
 				break;
 			case 1:
 				resId = R.layout.helplayout;
@@ -170,5 +186,125 @@ public class MainActivity extends FragmentActivity {
 			return view;
 		}
 	}
+
+private class sendRDYMSGTask extends AsyncTask<String, Void, Integer> {
+        public static final int TOO_LONG_ERROR = 0;
+        public static final int CONNECTION_ERROR = 1;
+        public static final int SUCESS = 2;
+        
+        protected Integer doInBackground(String... params) {
+                return sendRDYMSG(params[0], params[1]);
+        }
+        
+        protected void onPostExecute(Integer result) {
+                switch(result) {
+                case SUCESS:
+                        Toast.makeText(MainActivity.this, "Sent", Toast.LENGTH_SHORT).show();
+                        break;
+                case CONNECTION_ERROR:
+                        Toast.makeText(MainActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
+                        break;
+                default:
+                        break;
+                }
+        }
+        
+        int sendRDYMSG(String ip, String message) {
+                try {
+                        Socket socket = new Socket(ip, printerPort);
+                        OutputStream out = socket.getOutputStream();
+                        out.write(MessageFormat.format(formatRDYMSG, message).getBytes());
+                        out.close();
+                        socket.close();
+                } catch (UnknownHostException e) {
+                        e.printStackTrace();
+                        return CONNECTION_ERROR;
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        return CONNECTION_ERROR;
+                }
+                return SUCESS;
+        }
+}
+
+private class sendERRMSGTask extends AsyncTask<String, Void, Integer> {
+    public static final int TOO_LONG_ERROR = 0;
+    public static final int CONNECTION_ERROR = 1;
+    public static final int SUCESS = 2;
+    
+    protected Integer doInBackground(String... params) {
+            return sendERRMSG(params[0], params[1]);
+    }
+    
+    protected void onPostExecute(Integer result) {
+            switch(result) {
+            case SUCESS:
+                    Toast.makeText(MainActivity.this, "Sent", Toast.LENGTH_SHORT).show();
+                    break;
+            case CONNECTION_ERROR:
+                    Toast.makeText(MainActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
+                    break;
+            default:
+                    break;
+            }
+    }
+    
+    int sendERRMSG(String ip, String message) {
+            try {
+                    Socket socket = new Socket(ip, printerPort);
+                    OutputStream out = socket.getOutputStream();
+                    out.write(MessageFormat.format(formatERRMSG, message).getBytes());
+                    out.close();
+                    socket.close();
+            } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                    return CONNECTION_ERROR;
+            } catch (IOException e) {
+                    e.printStackTrace();
+                    return CONNECTION_ERROR;
+            }
+            return SUCESS;
+    }
+}
+
+private class sendOPMSGTask extends AsyncTask<String, Void, Integer> {
+        public static final int TOO_LONG_ERROR = 0;
+        public static final int CONNECTION_ERROR = 1;
+        public static final int SUCESS = 2;
+        
+        protected Integer doInBackground(String... params) {
+                return sendOPMSG(params[0], params[1]);
+        }
+        
+        protected void onPostExecute(Integer result) {
+                switch(result) {
+                case SUCESS:
+                        Toast.makeText(MainActivity.this, "Sent", Toast.LENGTH_SHORT).show();
+                        break;
+                case CONNECTION_ERROR:
+                        Toast.makeText(MainActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
+                        break;
+                default:
+                        break;
+                }
+        }
+        
+        int sendOPMSG(String ip, String message) {
+        try {
+                Socket socket = new Socket(ip, printerPort);
+                OutputStream out = socket.getOutputStream();
+                out.write(MessageFormat.format(formatOPMSG, message).getBytes());
+                out.close();
+                socket.close();
+        } catch (UnknownHostException e) {
+                e.printStackTrace();
+                return CONNECTION_ERROR;
+        } catch (IOException e) {
+                e.printStackTrace();
+                return CONNECTION_ERROR;
+        }
+        return SUCESS;
+}
+}
 
 }
