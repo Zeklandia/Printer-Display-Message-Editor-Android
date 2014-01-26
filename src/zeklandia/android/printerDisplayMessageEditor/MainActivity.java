@@ -51,11 +51,6 @@ public class MainActivity extends FragmentActivity {
 	Intent helpActivity;
 	Intent aboutActivity;
 	
-	static ListAdapter mPrinterListAdapter;
-	List<HashMap<String, String>> mPrinterListData = new ArrayList<HashMap<String, String>>();
-	static String[] mPrinterListFrom = new String[]{"PRINTER_NAME", "PRINTER_IP"};
-	static int[] mPrinterListTo = new int[]{R.id.title_text, R.id.subtitle_text};
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         if(PrinterSettingsStorage.useLightTheme(getContext())) {
