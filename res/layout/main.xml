@@ -6,60 +6,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <RadioGroup
-            android:id="@+id/radioGroupMessage"
+        <EditText
+            android:id="@+id/editTextMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" >
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/imageButton1"
+            android:layout_toLeftOf="@+id/imageButton1"
+            android:ems="10"
+            android:hint="Display message..."
+            android:inputType="textMultiLine" >
 
-            <RadioButton
-                android:id="@+id/radioButtonRDYMSG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Ready Message" />
+            <requestFocus />
+        </EditText>
 
-            <RadioButton
-                android:id="@+id/radioButtonERRMSG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Error Message" />
-
-            <RadioButton
-                android:id="@+id/radioButtonOPMSG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Operator Message" />
-        </RadioGroup>
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_menu_send" />
 
         <EditText
             android:id="@+id/editTextIP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/radioGroupMessage"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:ems="10"
             android:hint="Printer IP Address..."
             android:inputType="phone" />
-
-        <EditText
-            android:id="@+id/editTextMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextIP"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:hint="Display message..."
-            android:inputType="textMultiLine" />
-
-        <Button
-            android:id="@+id/buttonSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="Send Message" />
 
     </RelativeLayout>
 
