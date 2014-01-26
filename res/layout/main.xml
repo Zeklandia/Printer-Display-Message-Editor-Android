@@ -3,8 +3,8 @@
     android:layout_height="fill_parent" >
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
         <EditText
             android:id="@+id/editTextMessage"
@@ -39,6 +39,33 @@
             android:ems="10"
             android:hint="Printer IP Address..."
             android:inputType="phone" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/editTextIP" >
+
+            <RadioButton
+                android:id="@+id/radioButtonRDY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Ready Message" />
+
+            <RadioButton
+                android:id="@+id/radioButtonERR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Error Message" />
+
+            <RadioButton
+                android:id="@+id/radioButtonOP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Operator Message" />
+        </RadioGroup>
 
     </RelativeLayout>
 
