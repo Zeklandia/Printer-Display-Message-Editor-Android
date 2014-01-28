@@ -3,47 +3,12 @@
     <string name="app_name">Printer Display Message Editor</string>
     <string name="help_title">Help</string>
     <string name="about_title">About</string>
-    <string name="rdymsg_help_text">RDYMSG commands, or ready message commands, 
-    	are used to change a printer\'s \'ready\' message. 
-    	\n\nThis has many entertaining possibilities - I recommend 
-    	trying things like \'insert coin\' or \'out of cheese\'.</string>
-   	<string name="opmsg_help_text">OPMSG commands, or operator message commands,
-      	are intended to display a message on the printer which 
-   		can be canceled by pressing the printer\'s \'ok\' button. 
-   		\nThese commands will behave differently on different models - 
-   		possible behaviors include beeping, pausing printing, or flashing a light 
-   		when an OPMSG is received.</string>
-  	<string name="app_help_text"><b>Overview:</b>
-  		\nThis application is designed to be able to use a standard called PJL, or 
-  		Printer Job Language, to change the ready message on certain types of printers. It is also capable of 
-  		sending commands which will cause printers to display an \'operator message\' to the user. 
-  		\nThe primary use for this program is probably pranking, but it certaintly has the potential for 
-  		other, more legitimate uses as well.
-  		\n
-  		\n<b>How to use:</b>
-  		\nTo use this program, you need to do two things:
-  		\n- Figure out the IP of the network printer you wish to hack
-  		\n- Connect to a wifi network where the printer is accessible
-  		\nOnce you\'ve got that taken care of, simply open the program, input your message, and 
-  		click one of the two commands below the message box.
-  		\n
-  		\n<b>How to find your printer\'s IP:</b>
-  		\nThere are two ways to find the IP of your network printer. The first is to print a network report 
-  		using the printer\'s menu. Most printers which support PJL will have this option under 
-  		\'reports\' or \'status\'. The second way is to find the IP by looking up the printer on a 
-  		computer which is already connected to the printer. You can find instructions for how to do this at http://www.findmyip.org/find-network-printer-ip.php
-  		</string>
-	
-	<string name="app_about_text"><b>About Printerhack:</b>
-		\nPrinterhack is written by Quinn Rohlf and the core printer code is licensed under the Apache 2.0 open source license. 
-		You can view the source at http://qrohlf.com. The program was originally developed just for my own amusement, 
-		and after a friend found it and played around with it at school, I realized that there was probably a market 
-		for this sort of thing. The version you\'re using is a much more polished version than the original, and was 
-		written with the intent of making a little bit of money for college. 
-		\n
-		\nActually, money for college is one of the main goals I have with Android development, so it would be really 
-		cool of you to donate via my <a href="http://qrohlf.com/donate/">website</a>!
-	</string>
 	<string name="action_settings">Settings</string>
 	<string name="main_title">Welcome</string>
+	<string name="display_message_hint">Display message…</string>
+	<string name="printer_ip_address_hint">Printer IP Address…</string>
+	<string name="ready_message">Ready Message</string>
+	<string name="error_message">Error Message</string>
+	<string name="operator_message">Operator Message</string>
+	<string name="send_message">Send Message</string>
 </resources>

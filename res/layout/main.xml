@@ -15,7 +15,7 @@
             android:layout_alignTop="@+id/imageButton1"
             android:layout_toLeftOf="@+id/imageButton1"
             android:ems="10"
-            android:hint="Display message..."
+            android:hint="@string/display_message_hint"
             android:inputType="textMultiLine" >
 
             <requestFocus />
@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@android:drawable/ic_menu_send" />
+            android:src="@android:drawable/ic_menu_send"
+            android:contentDescription="@string/send_message"/>
 
         <EditText
             android:id="@+id/editTextIP"
@@ -37,7 +38,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:ems="10"
-            android:hint="Printer IP Address..."
+            android:hint="@string/printer_ip_address_hint"
             android:inputType="phone" />
 
         <RadioGroup
@@ -52,19 +53,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Ready Message" />
+                android:text="@string/ready_message" />
 
             <RadioButton
                 android:id="@+id/radioButtonERR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Error Message" />
+                android:text="@string/error_message" />
 
             <RadioButton
                 android:id="@+id/radioButtonOP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Operator Message" />
+                android:text="@string/operator_message" />
         </RadioGroup>
 
     </RelativeLayout>
