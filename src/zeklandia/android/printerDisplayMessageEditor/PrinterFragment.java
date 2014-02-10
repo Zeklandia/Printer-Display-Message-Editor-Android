@@ -35,7 +35,6 @@ public class PrinterFragment extends Fragment {
     "@PJL OPMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
     private final static String formatERRMSG = "\u001B%-12345X@PJL JOB\n" +
     "@PJL ERRMSG DISPLAY=\"{0}\"\n@PJL EOJ\n\u001B%-12345X\n";
-	static final boolean debug = false;
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) { 
@@ -77,6 +76,11 @@ public class PrinterFragment extends Fragment {
 			
 		}});
 	}
+	
+	public static PrinterFragment newInstance(int index) {
+        PrinterFragment fragment = new PrinterFragment();
+        return fragment;
+    }
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
