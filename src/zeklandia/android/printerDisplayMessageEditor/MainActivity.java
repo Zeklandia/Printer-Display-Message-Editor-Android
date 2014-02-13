@@ -28,6 +28,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.view.InflateException;
@@ -43,7 +44,7 @@ public class MainActivity extends FragmentActivity {
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
 	static ViewPager mViewPager;
-	public static View view;
+	// public static View view;
 	
 	Intent helpActivity;
 	Intent aboutActivity;
@@ -92,11 +93,16 @@ public class MainActivity extends FragmentActivity {
         return MainActivity.this;
     }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
 		}
+		
+	    @Override
+	    public int getItemPosition(Object object){
+	        return SectionsPagerAdapter.POSITION_NONE;
+	    }
 
 		@Override
 		public Fragment getItem(int position) {
@@ -139,12 +145,12 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			if (view != null) {
+			/* if (view != null) {
 				ViewGroup parent = (ViewGroup) view.getParent();
 				if (parent != null) {
 					parent.removeView(view);
 				}
-			}
+			} */
 			LayoutInflater inflater1 = (LayoutInflater) mViewPager.getContext()
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -160,11 +166,13 @@ public class MainActivity extends FragmentActivity {
 			case 2:
 				resId = R.layout.aboutlayout;
 			}
-			try {
-			View view = inflater1.inflate(resId, null);
+			/* try {
+				view = inflater.inflate(resId, null);
 			} catch (InflateException e) {
-				
-			}
+				System.out.println("Error inflating view");
+			} */
+			
+			View view = inflater.inflate(resId, null);
 			return view;
 		}
 	}
