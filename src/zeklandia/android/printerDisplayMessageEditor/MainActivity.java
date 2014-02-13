@@ -20,10 +20,6 @@ package zeklandia.android.printerDisplayMessageEditor;
  *			       });
  */
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -34,19 +30,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 
 public class MainActivity extends FragmentActivity {
 
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
 	static ViewPager mViewPager;
+	public static View view;
 	
 	Intent helpActivity;
 	Intent aboutActivity;
@@ -142,6 +139,12 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
+			if (view != null) {
+				ViewGroup parent = (ViewGroup) view.getParent();
+				if (parent != null) {
+					parent.removeView(view);
+				}
+			}
 			LayoutInflater inflater1 = (LayoutInflater) mViewPager.getContext()
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -157,9 +160,11 @@ public class MainActivity extends FragmentActivity {
 			case 2:
 				resId = R.layout.aboutlayout;
 			}
-
+			try {
 			View view = inflater1.inflate(resId, null);
-			
+			} catch (InflateException e) {
+				
+			}
 			return view;
 		}
 	}
