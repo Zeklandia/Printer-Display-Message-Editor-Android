@@ -20,7 +20,7 @@ public class PrinterSettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.pref_general);
 
         SwitchPreference holoTheme = (SwitchPreference) findPreference("THEME");
-        if(holoTheme != null) {
+        if (holoTheme != null) {
             holoTheme.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {

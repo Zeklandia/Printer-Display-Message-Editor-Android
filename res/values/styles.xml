@@ -4,10 +4,8 @@
         <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
     </style>
 
-    <style name="HoloLight" parent="@android:style/Theme.Holo.Light">
-    </style>
+    <style name="HoloLight" parent="@android:style/Theme.Holo.Light"></style>
 
-    <style name="Immersive" parent="android:Theme.Holo.NoActionBar.TranslucentDecor">
-    </style>
+    <style name="Immersive" parent="android:Theme.Holo.NoActionBar.TranslucentDecor"></style>
 
 </resources>

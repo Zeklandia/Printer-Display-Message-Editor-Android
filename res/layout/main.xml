@@ -1,10 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <EditText
             android:id="@+id/editTextMessage"
@@ -16,7 +16,7 @@
             android:layout_toLeftOf="@+id/imageButton1"
             android:ems="10"
             android:hint="@string/display_message_hint"
-            android:inputType="textMultiLine" >
+            android:inputType="textMultiLine">
 
             <requestFocus />
         </EditText>
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@android:drawable/ic_menu_send"
-            android:contentDescription="@string/send_message"/>
+            android:contentDescription="@string/send_message"
+            android:src="@android:drawable/ic_menu_send" />
 
         <EditText
             android:id="@+id/editTextIP"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/editTextIP" >
+            android:layout_below="@+id/editTextIP">
 
             <RadioButton
                 android:id="@+id/radioButtonRDY"

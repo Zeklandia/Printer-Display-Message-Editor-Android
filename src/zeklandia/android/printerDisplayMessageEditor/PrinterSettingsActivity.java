@@ -41,7 +41,7 @@ public class PrinterSettingsActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return true;
