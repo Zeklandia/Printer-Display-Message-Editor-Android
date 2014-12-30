@@ -19,7 +19,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.MessageFormat;
 
-public class PrinterFragment extends Fragment {
+public class PrinterFragment extends FragmentActivity {
 
     private static final int printerPort = 9100;
     private final static String formatRDYMSG = "\u001B%-12345X@PJL JOB\n" +
